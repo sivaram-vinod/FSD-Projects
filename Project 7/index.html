@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code Breaker – The Array Heist</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="app" aria-labelledby="app-title">
+    <header class="topbar">
+      <h1 id="app-title">Code Breaker <span class="muted">– The Array Heist</span></h1>
+      <div class="gamestate">
+        <div class="level">Level: <span id="level">1</span></div>
+        <div class="timer" aria-live="polite">⏱ <span id="time">60</span>s</div>
+        <div class="target" aria-live="polite">
+          🎯 Target: <span id="target-desc">2-digit pattern</span>
+          <button id="hint-btn" class="link" aria-label="Show hint">Hint</button>
+          <span id="hint" class="hint" hidden></span>
+        </div>
+      </div>
+    </header>
+
+    <section class="board" aria-label="Array board">
+      <div id="array" class="array" role="list"></div>
+      <p id="empty-msg" class="empty muted">Array is empty. Insert digits to begin.</p>
+    </section>
+
+    <section class="controls" aria-labelledby="ops-title">
+      <h2 id="ops-title" class="sr-only">Operations</h2>
+      <div class="row">
+        <label class="lbl">Index <input id="idx" type="number" min="0" max="9" placeholder="0-9"></label>
+        <label class="lbl">Value <input id="val" type="number" min="0" max="9" placeholder="0-9"></label>
+        <button id="insert" class="btn">Insert at Index</button>
+        <button id="delete" class="btn danger">Delete at Index</button>
+      </div>
+      <div class="row">
+        <label class="lbl grow">Pattern <input id="pattern" type="text" placeholder="e.g., 2,1,4"></label>
+        <button id="search" class="btn ghost">Search for Pattern</button>
+        <button id="reset" class="btn ghost">Reset Array</button>
+        <button id="restart" class="btn ghost">Restart Level</button>
+      </div>
+    </section>
+
+    <section class="messages" aria-live="polite">
+      <div id="msg"></div>
+    </section>
+
+    <section class="actions">
+      <button id="next-level" class="btn big" hidden>Next Level ▶</button>
+    </section>
+
+    <footer class="footer">
+      <p class="muted">
+        Teaches insertion, deletion, and linear subarray search. Double‑click a cell to clear it quickly.
+      </p>
+    </footer>
+  </main>
+
+  <template id="cell-template">
+    <div class="cell" role="listitem" data-filled="false" tabindex="0" aria-label="empty"></div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

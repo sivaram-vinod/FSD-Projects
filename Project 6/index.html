@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To-Do</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="app" aria-labelledby="app-title">
+        <header class="header">
+            <h1 id="app-title">To-Do</h1>
+            <div class="add-bar">
+                <input id="new-todo" class="input" type="text" placeholder="What needs to be done? (Press Enter)"
+                    aria-label="New task" autocomplete="off" />
+                <button id="add-btn" class="btn" aria-label="Add task">Add</button>
+            </div>
+        </header>
+
+        <section class="controls" aria-label="List controls">
+            <div class="filters" role="tablist" aria-label="Filter tasks">
+                <button class="chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+                <button class="chip" data-filter="active" role="tab" aria-selected="false">Active</button>
+                <button class="chip" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+            </div>
+            <div class="meta">
+                <span id="items-left" class="muted">0 items left</span>
+                <button id="clear-completed" class="link" aria-label="Clear completed tasks">Clear Completed</button>
+                <button id="toggle-theme" class="link" aria-label="Toggle theme">🌗</button>
+            </div>
+        </section>
+
+        <section class="list-wrap" aria-live="polite">
+            <ul id="todo-list" class="list" role="list"></ul>
+            <p id="empty" class="empty muted">No tasks yet. Add one above!</p>
+        </section>
+
+        <footer class="footer">
+            <span class="muted">Tip: Double-click a task to edit. Press Enter to save, Esc to cancel.</span>
+        </footer>
+    </main>
+
+    <template id="todo-item-template">
+        <li class="item" draggable="true">
+            <label class="checkbox">
+                <input type="checkbox" aria-label="Mark complete" />
+                <span class="check"></span>
+            </label>
+            <span class="title" tabindex="0"></span>
+            <input class="edit" type="text" aria-label="Edit task" />
+            <button class="icon-btn destroy" aria-label="Delete task" title="Delete">✖</button>
+            <span class="handle" title="Drag to reorder" aria-hidden="true">⋮⋮</span>
+        </li>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
